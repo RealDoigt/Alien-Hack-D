@@ -1,0 +1,7 @@
+name "the_alien_hack"
+description "A raylib game"
+authors "Doigt, Happy_Waves, Reed Snowe"
+license "MIT"
+dependency "raylib-d" version="~>4.0.0"
+libs "raylib"
+lflags "-L./lib"
