@@ -19,18 +19,49 @@ class LevelFileNotFoundException : Exception
     }
 }
 
+class InvalidBitTypeException : Exception
+{
+    this(ubyte value)
+    {
+        super
+        (
+            "Number %d doesn't correspond to an extant bit type".format(value), 
+            __FILE__, 
+            __LINE__
+        );
+    }
+}
+
 class Level
 {
     enum maxWidth = 8;
 
-    Bit[][] bits;
-    
-    ubyte solution,
-          shifts,
-          ors,
-          xors,
-          ands,
-          nots;
+    private 
+    {
+        Bit[][] bits;
+        ubyte solution,
+              shifts,
+              ors,
+              xors,
+              ands,
+              nots;
+
+        // fonction de test à enlever plus tard
+        auto concatBitsToString()
+        {
+            string result;
+
+            foreach (cluster; bits)
+            {
+                foreach (bit; cluster)
+                    result ~= typeid(bit).toString;
+
+                result ~= "\n";
+            }
+
+            return result;
+        }
+    }
 
     this(string file)
     {
@@ -51,12 +82,62 @@ class Level
         ands     = data[5];
         nots     = data[6];
 
-        bits = 
+        bits = new Bit[][](data[0], maxWidth);
 
         // the first byte is the number of rows
         for (int y = 0; y < data[0]; ++y)
             for (int x = 0; x < maxWidth; ++x)
+            {
+                /* 
+                    the 8th byte (or 7th in the index order) is the byte
+                    where the data on the bits starts
+                */ 
+                ubyte value = data[y * maxWidth + x + 7];
+                auto isAlive = cast(bool)((value << 7) >> 7);
+                
+                /* 
+                    un bit est arrangé comme suit où b est le booléen d'activité
+                    et t et le type de bit: 0000 tttb
+                */
+                switch (value >> 1)
+                {
+                    case 1: 
+                        bits[y][x] = new Bit(isAlive); 
+                        break;
 
+                    case 2:
+                        bits[y][x] = new Explosive(isAlive);
+                        break;
+                    
+                    case 3:
+                        bits[y][x] = new Virus(isAlive);
+                        break;
 
+                    case 4:
+                        bits[y][x] = new Zombie(isAlive);
+                        break;
+
+                    case 5:
+                        bits[y][x] = new Wise(isAlive);
+                        break;
+
+                    default: throw new InvalidBitTypeException(value >> 1);
+                }
+            }
+    }
+
+    // fonction de test à enlever plus tard
+    override string toString()
+    {
+        return "Goal %b\nShifts %d Ors %d Xors %d Ands %d Nots %d\n%s".format
+        (
+            solution,
+            shifts,
+            ors,
+            xors,
+            ands,
+            nots,
+            concatBitsToString
+        );
     }
 }
