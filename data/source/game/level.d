@@ -93,7 +93,7 @@ class Level
                     where the data on the bits starts
                 */ 
                 ubyte value = data[y * maxWidth + x + 7];
-                auto isAlive = cast(bool)((value << 7) >> 7);
+                auto isAlive = cast(bool)(value & 1);
                 
                 /* 
                     un bit est arrangé comme suit où b est le booléen d'activité
