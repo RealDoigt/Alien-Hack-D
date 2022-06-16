@@ -34,6 +34,7 @@ class GameLoop {
             break;
           case Menus.options:
             optionsMenu();
+            break;
           case Menus.controls:
             controlsMenu();
             break;
