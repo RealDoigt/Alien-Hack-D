@@ -4,86 +4,85 @@ class GameLoop {
 
   enum Menus
   {
-    Main_menu = 1,
-    Game = 2,
-    Success = 3,
-    Failed = 4,
-    Options = 5,
-    Controls = 6,
-    Save_Game = 7,
-    Load_Game = 8
+    mainMenu,
+    game,
+    success,
+    failed,
+    options,
+    controls,
+    saveGame,
+    loadGame
   }
 
-  int menu_selected = Menus.Main_menu;
+  int menuSelected = Menus.Main_menu;
 
-  void menu_selection() 
+  void menu_Selection() 
   {
-      switch (menu_selected) 
+      final switch (menuSelected) 
       {
-          case 1:
-            main_menu();
+          case Menus.mainMenu:
+            mainMenu();
             break;
-          case 2:
-            game_menu();
+          case Menus.game:
+            gameMenu();
             break;
-          case 3:
-            success_menu();
+          case Menus.success:
+            successMenu();
             break;
-          case 4:
-            failed_menu();
+          case Menus.failed:
+            failedMenu();
             break;
-          case 5:
-            options_menu();
+          case Menus.options:
+            optionsMenu();
+          case Menus.controls:
+            controlsMenu();
             break;
-          case 6:
-            controls_menu();
+          case Menus.saveGame:
+            saveGameMenu();
             break;
-          case 7:
-            save_game_menu();
-            break;
-          case 8:
-            load_game_menu();
+          case Menus.loadGame:
+            loadGameMenu();
             break;
       }
   }
 
-  void main_menu() 
+  void mainMenu() 
   {
-
+    menuSelected = Menus.mainMenu;
   }
 
-  void game_menu() 
+  void gameMenu() 
   {
-
+    menuSelected = Menus.game;
   }
 
-  void success_menu()
+  void successMenu()
   {
-
+    menuSelected = Menus.success;
   }
 
-  void failed_menu()
+  void failedMenu()
   {
-
+    menuSelected = Menus.failed;
   }
   
-  void options_menu()
+  void optionsMenu()
   {
-
+    menuSelected = Menus.options;
   }
 
-  void controls_menu() 
+  void controlsMenu() 
   {
-
+    menuSelected = Menus.controls;
   }
 
-  void load_game_menu()
+  void loadGameMenu()
   {
-
+    menuSelected = Menus.loadGame;
   }
 
-  void save_game_menu()
+  void saveGameMenu()
   {
-
+    menuSelected = Menus.saveGame;
   }
 }
