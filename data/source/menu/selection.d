@@ -14,7 +14,7 @@ class GameLoop {
     loadGame
   }
 
-  int menuSelected = Menus.Main_menu;
+  int menuSelected = Menus.mainMenu;
 
   void menu_Selection() 
   {
