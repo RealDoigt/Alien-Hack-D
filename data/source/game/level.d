@@ -114,7 +114,20 @@ class Level
 
     void toggle(int x, int y, bool activateEffect = true)
     {
-        bits[y][x].isAlive = !bits[y][x].isAlive;
-        if (activateEffect) bits[y][x].change(this, x, y);
+        // the virus bit will be out of bounds if on any of the sides
+        if (x < bits[0].length || y < bits.length)
+        {
+            bits[y][x].isAlive = !bits[y][x].isAlive;
+            if (activateEffect) bits[y][x].change(this, x, y);
+        }
+    }
+
+    auto isAlive(int x, int y)
+    {
+        // the explosive bit will be out of bounds if on the sides
+        if (x >= bits[0].length || y >= bits.length)
+            return false;
+
+        return bits[y][x].isAlive;
     }
 }
