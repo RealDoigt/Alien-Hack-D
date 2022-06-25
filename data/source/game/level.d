@@ -1,5 +1,6 @@
 module game.level;
 import std.string;
+import std.conv;
 import raylib;
 import game;
 
@@ -112,7 +113,7 @@ class Level
         );
     }
 
-    void toggle(int x, int y, bool activateEffect = true)
+    void toggle(int x, int y, bool activateEffect = false)
     {
         // the virus bit will be out of bounds if on any of the sides
         if (x < bits[0].length || y < bits.length)
@@ -124,10 +125,20 @@ class Level
 
     auto isAlive(int x, int y)
     {
-        // the explosive bit will be out of bounds if on the sides
+        // the explosive and virus bit will be out of bounds if on any of the sides
         if (x >= bits[0].length || y >= bits.length)
             return false;
 
         return bits[y][x].isAlive;
+    }
+
+    auto getSolution()
+    {
+        char[8] result;
+
+        for (int i = 0; i < 8; ++i)
+            result[7 - i] = (solution << (7 - i)) >> 7 ? '1' : '0';
+
+        return result.to!string;
     }
 }
