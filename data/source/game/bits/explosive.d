@@ -15,8 +15,8 @@ class Explosive : Bit
         if (level.isAlive(x + 1, y) && level.isAlive(x - 1, y))
         {
             isAlive = false;
-            level.toggle(x + 1, y, false);
-            level.toggle(x - 1, y, false);
+            level.toggle(x + 1, y);
+            level.toggle(x - 1, y);
         }
     }
 }
