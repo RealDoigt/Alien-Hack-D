@@ -1,8 +1,6 @@
 module menu.selection;
 
-class GameLoop {
-
-  enum Menus
+  enum Screens
   {
     mainMenu,
     game,
@@ -14,76 +12,75 @@ class GameLoop {
     loadGame
   }
 
-  int menuSelected = Menus.mainMenu;
+  auto menuSelected = Screens.mainMenu;
 
-  void menu_Selection() 
+  void displayMenuSelection() 
   {
       final switch (menuSelected) 
       {
-          case Menus.mainMenu:
-            mainMenu();
+          case Screens.mainMenu:
+            displayMainMenu;
             break;
-          case Menus.game:
-            gameMenu();
+          case Screens.game:
+            displayGameMenu;
             break;
-          case Menus.success:
-            successMenu();
+          case Screens.success:
+            displaySuccessMenu;
             break;
-          case Menus.failed:
-            failedMenu();
+          case Screens.failed:
+            displayFailedMenu;
             break;
-          case Menus.options:
-            optionsMenu();
+          case Screens.options:
+            displayOptionsMenu;
             break;
-          case Menus.controls:
-            controlsMenu();
+          case Screens.controls:
+            displayControlsMenu;
             break;
-          case Menus.saveGame:
-            saveGameMenu();
+          case Screens.saveGame:
+            displaySaveGameMenu;
             break;
-          case Menus.loadGame:
-            loadGameMenu();
+          case Screens.loadGame:
+            displayLoadGameMenu;
             break;
       }
   }
 
-  void mainMenu() 
+  void displayMainMenu() 
   {
-    menuSelected = Menus.mainMenu;
+    menuSelected = Screens.mainMenu;
   }
 
-  void gameMenu() 
+  void displayGameMenu() 
   {
-    menuSelected = Menus.game;
+    menuSelected = Screens.game;
   }
 
-  void successMenu()
+  void displaySuccessMenu()
   {
-    menuSelected = Menus.success;
+    menuSelected = Screens.success;
   }
 
-  void failedMenu()
+  void displayFailedMenu()
   {
-    menuSelected = Menus.failed;
+    menuSelected = Screens.failed;
   }
   
-  void optionsMenu()
+  void displayOptionsMenu()
   {
-    menuSelected = Menus.options;
+    menuSelected = Screens.options;
   }
 
-  void controlsMenu() 
+  void displayControlsMenu() 
   {
-    menuSelected = Menus.controls;
+    menuSelected = Screens.controls;
   }
 
-  void loadGameMenu()
+  void displayLoadGameMenu()
   {
-    menuSelected = Menus.loadGame;
+    menuSelected = Screens.loadGame;
   }
 
-  void saveGameMenu()
+  void displaySaveGameMenu()
   {
-    menuSelected = Menus.saveGame;
+    menuSelected = Screens.saveGame;
   }
-}
