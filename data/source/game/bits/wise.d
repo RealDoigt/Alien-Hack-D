@@ -9,7 +9,7 @@ class Wise : Bit
         super(isAlive);
     }
 
-    override void change (Level level, int x, int y)
+    override void changeState(Level level, int x, int y)
     {
         isAlive = level.getSolution[x] == '1';
     }

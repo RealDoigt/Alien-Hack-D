@@ -8,7 +8,7 @@ class Zombie : Bit
         super(isAlive);
     }
 
-    override void change(Level level, int x, int y)
+    override void changeState(Level level, int x, int y)
     {
         isAlive = !isAlive;
     }

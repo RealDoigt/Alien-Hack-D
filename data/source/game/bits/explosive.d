@@ -10,7 +10,7 @@ class Explosive : Bit
         super(isAlive);
     }
 
-    override void change(Level level, int x, int y)
+    override void changeState(Level level, int x, int y)
     {
         if (level.isAlive(x + 1, y) && level.isAlive(x - 1, y))
         {

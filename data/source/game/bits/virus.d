@@ -9,7 +9,7 @@ class Virus : Bit
         super(isAlive);
     }
 
-    override void change (Level level, int x, int y)
+    override void changeState(Level level, int x, int y)
     {
         isAlive = true;
 

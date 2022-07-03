@@ -12,5 +12,5 @@ class Bit
     }
 
     // Keep it empty because the regular bit doesn't do anything.
-    void change(Level level, int x, int y){}
+    void changeState(Level level, int x, int y){}
 }
