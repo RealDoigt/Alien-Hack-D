@@ -142,7 +142,7 @@ class Level
         return result.to!string;
     }
 
-    ubyte toRealBits(int row)
+    auto toRealBits(int row)
     {
         if (row >= bits.length || row < 0) 
             throw new RowOutOfLevelRangeException(row, bits.length);
