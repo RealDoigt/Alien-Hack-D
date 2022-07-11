@@ -29,3 +29,16 @@ class InvalidBitTypeException : Exception
         );
     }
 }
+
+class RowOutOfLevelRangeException : Exception
+{
+    this(int value, ulong maxPossibleValue)
+    {
+        super
+        (
+            "Row number %d is out of range. It is expected to be between 0 and %d".format(value, maxPossibleValue), 
+            __FILE__, 
+            __LINE__
+        );
+    }
+}
