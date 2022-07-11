@@ -119,7 +119,7 @@ class Level
         if (x < bits[0].length || y < bits.length)
         {
             bits[y][x].isAlive = !bits[y][x].isAlive;
-            if (activateEffect) bits[y][x].change(this, x, y);
+            if (activateEffect) bits[y][x].changeState(this, x, y);
         }
     }
 
@@ -140,5 +140,18 @@ class Level
             result[7 - i] = (solution << (7 - i)) >> 7 ? '1' : '0';
 
         return result.to!string;
+    }
+
+    ubyte toRealBits(int row)
+    {
+        if (row >= bits.length || row < 0) 
+            throw new RowOutOfLevelRangeException(row, bits.length);
+
+        ubyte result, x = 8; 
+
+        foreach (bit; bits[row])
+            result |= cast(ubyte)bit.isAlive << --x;
+
+        return result;
     }
 }
