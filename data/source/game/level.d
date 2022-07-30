@@ -154,4 +154,9 @@ class Level
 
         return result;
     }
+
+    auto isSolved()
+    {
+        return toRealBits(cast(int)bits.length - 1) == solution;
+    }
 }
