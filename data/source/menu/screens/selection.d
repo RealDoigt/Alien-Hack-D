@@ -1,4 +1,4 @@
-module menu.selection;
+module menu.screens.selection;
 
   enum Screens
   {
