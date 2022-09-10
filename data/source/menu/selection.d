@@ -1,4 +1,5 @@
 module menu.selection;
+import game.loop;
 
 enum Screens
 {

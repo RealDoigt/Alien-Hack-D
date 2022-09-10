@@ -6,4 +6,5 @@ public
     import game.globals;
     import game.level;
     import game.bits;
+    import game.loop;
 }
