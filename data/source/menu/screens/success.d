@@ -3,68 +3,64 @@ import menu.screens.selection;
 import raylib_misc;
 import raylib_misc.shapes.rectangle;
 import std.experimental.logger;
-
+import std.algorithm: canFind;
 import raylib;
 
-    string[] clickableOptionsText = 
+    string[] labelNotClickable = 
+    [
+        "Success!",
+        "Time remaining : ",
+    ];
+
+    string[] labelClickable = 
     [
         "Continue",
         "Save Game",
         "Return to main menu"
     ];
 
-    string[] labelText = 
-    [
-        "Success!",
-        "Time remaining",
-    ];
-
     //Used for testing
     auto gameScreen = "Success";
 
-    void isMouseOnOption(int width, int height, Rectangle[] rectCreated, Text text)
+    void isMouseOnOption(int width, int height, Rectangle[] labelRect, Text text)
     {
-        for (int i = 0; i < rectCreated.length; i++)
+        for (int i = 0; i < labelRect.length; i++)
         {
-            if (CheckCollisionPointRec(GetMousePosition, rectCreated[i]))
+            if (CheckCollisionPointRec(GetMousePosition, labelRect[i]))
             {
                 if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
                 {
                     //displayMainMenu;
-                    text.set(clickableOptionsText[i]);
+                    text.x = height;
+                    text.set(labelClickable[i]);
                     text.draw;
                 }
             }
         }
     }
-
-    //TRASH NEED TO REFACTOR "DONT REPEAT YOURSELF"
-    void createLabel(int width, int height, Text defaultText)
+ 
+    //Function that create the differentes label for the display
+    void createLabels(int width, int height, Text defaultText, Rectangle[] labelNotClickableRect, bool isClickable)
     {
-        for (int i = 0; i < labelText.length; i++)
-        {
-            defaultText.x = width / 2 - 50;
-            defaultText.y = 0 + (20 * i);
-            defaultText.set(labelText[i]);
-            defaultText.color = green;
-            defaultText.fontSize = 20; 
+        int positionLabelY = 0;
+        string[] labelUsed = labelNotClickable;
 
-            defaultText.draw;
+        if (isClickable) 
+        {
+            positionLabelY = height / 2;
+            labelUsed = labelClickable;
         }
-    }
 
-    void createRectangleOptions(int width, int height, Text defaultText, Rectangle[] rectCreated)
-    {
-        for (int i = 0; i < clickableOptionsText.length; i++)
+        for (int i = 0; i < labelUsed.length; i++)
         {
             defaultText.x = width / 2 - 50;
-            defaultText.y = height / 2 + (20 * i);
-            defaultText.set(clickableOptionsText[i]);
+            defaultText.y = positionLabelY + (20 * i);
+            defaultText.set(labelUsed[i]);
             defaultText.color = white;
             defaultText.fontSize = 20;
 
             Rect newRectangle = new Rect(width / 2 - 50, height / 2 + (20 * i), 85, 20, black);
-            rectCreated[i] = newRectangle;
+            labelNotClickableRect[i] = newRectangle;
 
             defaultText.draw;
         }
@@ -75,7 +71,8 @@ import raylib;
         //TEMP - METTRE LE WIDTH ET HEIGHT EN PUBLIC POUR Y ACCEDER DEPUIS LES OPTIONS CHOISI
         int width = 1080;
         int height = 720;
-        Rectangle[clickableOptionsText.sizeof] rectCreated; 
+        Rectangle[labelClickable.sizeof] labelClickableRect; 
+        Rectangle[labelNotClickable.sizeof] labelNotClickableRect;
         Text defaultText = new Text("First Text", 2 ,2 ,20);
 
         BeginDrawing;
@@ -83,9 +80,9 @@ import raylib;
             
             DrawRectangle(0, 0, width, height, black);
 
-            createLabel(width, height, defaultText);
-            createRectangleOptions(width, height, defaultText, rectCreated);            
-            isMouseOnOption(width, height,rectCreated, defaultText);
+            createLabels(width, height, defaultText, labelNotClickableRect, false);
+            createLabels(width, height, defaultText, labelClickableRect, true);            
+            isMouseOnOption(width, height,labelClickableRect, defaultText);
 
             white.ClearBackground;
     }
