@@ -3,7 +3,6 @@ import menu.screens.selection;
 import raylib_misc;
 import raylib_misc.shapes.rectangle;
 import std.experimental.logger;
-import std.algorithm: canFind;
 import raylib;
 
     string[] labelNotClickable = 
@@ -12,35 +11,43 @@ import raylib;
         "Time remaining : ",
     ];
 
-    string[] labelClickable = 
+    string[] labelClickable =
     [
         "Continue",
         "Save Game",
-        "Return to main menu"
+        "Return to main menu",
     ];
 
-    //Used for testing
-    auto gameScreen = "Success";
-
-    void isMouseOnOption(int width, int height, Rectangle[] labelRect, Text text)
+    void isMouseOnOption(Rectangle[] labelRect)
     {
         for (int i = 0; i < labelRect.length; i++)
         {
-            if (CheckCollisionPointRec(GetMousePosition, labelRect[i]))
+            if (CheckCollisionPointRec(GetMousePosition, labelRect[i]) && IsMouseButtonDown(MOUSE_LEFT_BUTTON))
             {
-                if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
-                {
-                    //displayMainMenu;
-                    text.x = height;
-                    text.set(labelClickable[i]);
-                    text.draw;
-                }
+                changeScreen(i);
+                displayCurrentScreen;
             }
         }
     }
  
+    void changeScreen(int index)
+    {
+        final switch (index)
+        {
+            case 0:
+                currentScreen = Screens.main_menu;
+                break;
+            case 1:
+                currentScreen = Screens.save_game;
+                break;
+            case 2:
+                currentScreen = Screens.main_menu;
+                break;
+        }
+    }
+
     //Function that create the differentes label for the display
-    void createLabels(int width, int height, Text defaultText, Rectangle[] labelNotClickableRect, bool isClickable)
+    void createLabels(int width, int height, Text defaultText, Rectangle[] labelRect, bool isClickable)
     {
         int positionLabelY = 0;
         string[] labelUsed = labelNotClickable;
@@ -59,8 +66,11 @@ import raylib;
             defaultText.color = white;
             defaultText.fontSize = 20;
 
-            Rect newRectangle = new Rect(width / 2 - 50, height / 2 + (20 * i), 85, 20, black);
-            labelNotClickableRect[i] = newRectangle;
+            if (labelRect != null)
+            {
+                Rect newRectangle = new Rect(width / 2 - 50, height / 2 + (20 * i), 85, 20, black);
+                labelRect[i] = newRectangle;
+            }
 
             defaultText.draw;
         }
@@ -72,7 +82,6 @@ import raylib;
         int width = 1080;
         int height = 720;
         Rectangle[labelClickable.sizeof] labelClickableRect; 
-        Rectangle[labelNotClickable.sizeof] labelNotClickableRect;
         Text defaultText = new Text("First Text", 2 ,2 ,20);
 
         BeginDrawing;
@@ -80,9 +89,9 @@ import raylib;
             
             DrawRectangle(0, 0, width, height, black);
 
-            createLabels(width, height, defaultText, labelNotClickableRect, false);
+            createLabels(width, height, defaultText, null, false);
             createLabels(width, height, defaultText, labelClickableRect, true);            
-            isMouseOnOption(width, height,labelClickableRect, defaultText);
+            isMouseOnOption(labelClickableRect);
 
             white.ClearBackground;
     }

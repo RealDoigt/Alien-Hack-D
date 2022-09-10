@@ -1,86 +1,90 @@
 module menu.screens.selection;
+import menu.screens;
 
   enum Screens
   {
-    mainMenu,
+    main_menu,
     game,
     success,
     failed,
     options,
     controls,
-    saveGame,
-    loadGame
+    save_game,
+    load_game
   }
 
-  auto menuSelected = Screens.mainMenu;
+  auto currentScreen = Screens.success;
 
-  void displayMenuSelection() 
+  void displayCurrentScreen() 
   {
-      final switch (menuSelected) 
-      {
-          case Screens.mainMenu:
-            displayMainMenu;
-            break;
-          case Screens.game:
-            displayGameMenu;
-            break;
-          case Screens.success:
-            displaySuccessMenu;
-            break;
-          case Screens.failed:
-            displayFailedMenu;
-            break;
-          case Screens.options:
-            displayOptionsMenu;
-            break;
-          case Screens.controls:
-            displayControlsMenu;
-            break;
-          case Screens.saveGame:
-            displaySaveGameMenu;
-            break;
-          case Screens.loadGame:
-            displayLoadGameMenu;
-            break;
-      }
+    final switch (currentScreen) 
+    {
+        case Screens.main_menu:
+          displayMainMenu;
+          break;
+        case Screens.game:
+          displayGameMenu;
+          break;
+        case Screens.success:
+          displaySuccessMenu;
+          break;
+        case Screens.failed:
+          displayFailedMenu;
+          break;
+        case Screens.options:
+          displayOptionsMenu;
+          break;
+        case Screens.controls:
+          displayControlsMenu;
+          break;
+        case Screens.save_game:
+          displaySaveGameMenu;
+          break;
+        case Screens.load_game:
+          displayLoadGameMenu;
+          break;
+    }
   }
 
   void displayMainMenu() 
   {
-    menuSelected = Screens.mainMenu;
+    currentScreen = Screens.main_menu;
+    setScreenMainMenu;
   }
 
   void displayGameMenu() 
   {
-    menuSelected = Screens.game;
+    currentScreen = Screens.game;
   }
 
   void displaySuccessMenu()
   {
-    menuSelected = Screens.success;
+    currentScreen = Screens.success;
+    setScreenSuccess;
   }
 
   void displayFailedMenu()
   {
-    menuSelected = Screens.failed;
+    currentScreen = Screens.failed;
   }
   
   void displayOptionsMenu()
   {
-    menuSelected = Screens.options;
+    currentScreen = Screens.options;
   }
 
   void displayControlsMenu() 
   {
-    menuSelected = Screens.controls;
+    currentScreen = Screens.controls;
   }
 
   void displayLoadGameMenu()
   {
-    menuSelected = Screens.loadGame;
+    currentScreen = Screens.load_game;
   }
 
   void displaySaveGameMenu()
   {
-    menuSelected = Screens.saveGame;
+    currentScreen = Screens.save_game;
+    setScreenSaveGame;
   }
