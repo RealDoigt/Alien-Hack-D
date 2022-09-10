@@ -24,13 +24,12 @@ import raylib;
         {
             if (CheckCollisionPointRec(GetMousePosition, labelRect[i]) && IsMouseButtonDown(MOUSE_LEFT_BUTTON))
             {
-                changeScreen(i);
-                displayCurrentScreen;
+                changeCurrentScreen(i);
             }
         }
     }
  
-    void changeScreen(int index)
+    void changeCurrentScreen(int index)
     {
         final switch (index)
         {
@@ -44,6 +43,7 @@ import raylib;
                 currentScreen = Screens.main_menu;
                 break;
         }
+        displayCurrentScreen;
     }
 
     //Function that create the differentes label for the display
