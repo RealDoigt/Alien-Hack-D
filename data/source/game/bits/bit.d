@@ -18,5 +18,8 @@ class Bit
     // Keep it empty because the regular bit doesn't do anything.
     void changeState(Level level, int x, int y){}
 
-    Color getColor() => isAlive ? color : Color(color.r >> dark, color.g >> dark, color.b >> dark);
+    Color getColor()
+    {
+        return isAlive ? color : Color(color.r >> dark, color.g >> dark, color.b >> dark, color.a);
+    }
 }
