@@ -22,7 +22,7 @@ void displayMenuSelection()
           displayMainMenu;
           break;
         case Screens.game:
-          displayGameMenu;
+          displayGameplay;
           break;
         case Screens.success:
           displaySuccessMenu;
