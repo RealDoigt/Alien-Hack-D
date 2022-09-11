@@ -25,9 +25,9 @@ class ClickableText : Text
         int spacing = fontSize / defaultFontSize;
         // end of the zlib licensed code
 
-        size = measure(spacing);
+        auto size = measure(cast(float)spacing);
 
-        area = new Rect(position, size.x, size.y);
+        area = new Rect(position, cast(int)size.x, cast(int)size.y);
     }
 
     void onClick()
