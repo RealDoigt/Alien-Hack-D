@@ -60,7 +60,6 @@ import menu.screens;
   void displaySuccessMenu()
   {
     currentScreen = Screens.success;
-    setScreenSuccess;
   }
 
   void displayFailedMenu()
