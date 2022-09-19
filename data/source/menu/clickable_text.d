@@ -1,4 +1,5 @@
 module menu.clickable_text;
+import std.stdio;
 import menu;
 import raylib;
 import raylib_misc;
@@ -30,9 +31,19 @@ class ClickableText : Text
         area = new Rect(position, cast(int)size.x, cast(int)size.y);
     }
 
+    void onHover()
+    {
+        if(area.checkCollision(GetMousePosition))
+        {
+            
+            writeln("orange");
+            this.color = red;
+        }
+    }
+
     void onClick()
     {
-        if (area.checkCollision(GetMousePosition))
+        if (area.checkCollision(GetMousePosition) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
             currentScreen = redirect;
     }
 }

@@ -20,13 +20,13 @@ import menu.screens;
     final switch (currentScreen) 
     {
         case Screens.main_menu:
-          displayMainMenu;
+          setScreenMainMenu;
           break;
         case Screens.game:
           displayGameMenu;
           break;
         case Screens.success:
-          displaySuccessMenu;
+          setScreenSuccess;
           break;
         case Screens.failed:
           displayFailedMenu;
@@ -55,11 +55,6 @@ import menu.screens;
   void displayGameMenu() 
   {
     currentScreen = Screens.game;
-  }
-
-  void displaySuccessMenu()
-  {
-    currentScreen = Screens.success;
   }
 
   void displayFailedMenu()

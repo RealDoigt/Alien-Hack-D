@@ -1,46 +1,42 @@
 module menu.screens.success;
-import menu.label;
+import menu.clickable_text;
+import menu.screens.selection;
 import raylib_misc;
 import raylib_misc.shapes.rectangle;
 import std.experimental.logger;
 import raylib;
+    
+    int width = 1080,
+        height = 720,
+        positionLabelX = 1080 / 2 - 50,
+        positionLabelY = 720 / 2;
 
-class Success : ClickableLabel
-{
-    string[] labelClickable =
-    [
-        "Continue",
-        "Save Game",
-        "Return to main menu",
-    ];
-
-    string[] labelNotClickable = 
-    [
-        "Success!",
-        "Time remaining : ",
-    ];
-
-    this(string[] labelClickable, string[] labelNotClickable)
+    void displayScreenSuccess()
     {
-        super(labelClickable, labelNotClickable);
-    }
+        ClickableText[] labelClickable = 
+        [
+            new ClickableText(Screens.main_menu, "Continue", positionLabelX, positionLabelY + (20), 20, white),
+            new ClickableText(Screens.save_game, "Save Game", positionLabelX, positionLabelY + (40), 20, white),
+            new ClickableText(Screens.main_menu, "Return to main menu", positionLabelX, positionLabelY + (60), 20, white),
+        ];
+        
+        Text[] labelNotClickable = 
+        [
+            new Text("Success", positionLabelX, 0, 20, white),
+            new Text("Time remaining : ", positionLabelX, 20, 20, white),
+        ];
 
-    override void drawScreen()
-    {
         //TEMP - METTRE LE WIDTH ET HEIGHT EN PUBLIC POUR Y ACCEDER DEPUIS LES OPTIONS CHOISI
-        int width = 1080;
-        int height = 720;
-        Rectangle[labelClickable.sizeof] labelClickableRect; 
-
         BeginDrawing;
             scope (exit) EndDrawing;
-            
-            DrawRectangle(0, 0, width, height, black);
-    
-            createLabels(null, labelNotClickable);
-            createLabels(labelClickableRect, labelClickable);            
-            isMouseOnOption(labelClickableRect);
-            
-            white.ClearBackground;
+
+            foreach (text; labelNotClickable) text.draw;
+            foreach (clickText; labelClickable)
+            {
+                clickText.draw;
+                clickText.onClick;
+                clickText.onHover;
+            }
+           
+            black.ClearBackground;
     }
-}
