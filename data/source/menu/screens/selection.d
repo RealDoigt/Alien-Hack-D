@@ -1,6 +1,7 @@
 module menu.screens.selection;
 import menu.screens;
 
+  //Enum of all available screens
   enum Screens
   {
     main_menu,
@@ -15,70 +16,34 @@ import menu.screens;
 
   auto currentScreen = Screens.success;
 
+  //Function to switch btw all screens available to the player
   void displayCurrentScreen() 
   {
     final switch (currentScreen) 
     {
         case Screens.main_menu:
-          setScreenMainMenu;
+          displayScreenMainMenu;
           break;
         case Screens.game:
-          displayGameMenu;
+          displayScreenGame;
           break;
         case Screens.success:
-          setScreenSuccess;
+          displayScreenSuccess;
           break;
         case Screens.failed:
-          displayFailedMenu;
+          displayScreenFailed;
           break;
         case Screens.options:
-          displayOptionsMenu;
+          displayScreenOptions;
           break;
         case Screens.controls:
-          displayControlsMenu;
+          displayScreenControls;
           break;
         case Screens.save_game:
-          displaySaveGameMenu;
+          displayScreenSaveGame;
           break;
         case Screens.load_game:
-          displayLoadGameMenu;
+          displayScreenLoadGame;
           break;
     }
-  }
-
-  void displayMainMenu() 
-  {
-    currentScreen = Screens.main_menu;
-    setScreenMainMenu;
-  }
-
-  void displayGameMenu() 
-  {
-    currentScreen = Screens.game;
-  }
-
-  void displayFailedMenu()
-  {
-    currentScreen = Screens.failed;
-  }
-  
-  void displayOptionsMenu()
-  {
-    currentScreen = Screens.options;
-  }
-
-  void displayControlsMenu() 
-  {
-    currentScreen = Screens.controls;
-  }
-
-  void displayLoadGameMenu()
-  {
-    currentScreen = Screens.load_game;
-  }
-
-  void displaySaveGameMenu()
-  {
-    currentScreen = Screens.save_game;
-    setScreenSaveGame;
   }

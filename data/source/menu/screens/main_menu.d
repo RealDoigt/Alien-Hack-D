@@ -1,19 +1,19 @@
 module menu.screens.main_menu;
+import menu.clickable_text;
+import menu.screens.selection;
+import menu.screens.options;
 import raylib;
 import raylib_misc;
 
-    void setScreenMainMenu()
+    //Used for testing will be redo
+    void displayScreenMainMenu()
     {
-        //TEMP - METTRE LE WIDTH ET HEIGHT EN PUBLIC POUR Y ACCEDER DEPUIS LES OPTIONS CHOISI
-        auto width = 1080;
-        auto height = 720;
-        Text defaultText = new Text("Main Menu", width / 2 , height / 2 ,20, white);
+        Text defaultText = new Text("Main Menu", widthScreen / 2 , heightScreen / 2 ,20, white);
 
         BeginDrawing;
             scope (exit) EndDrawing;
 
-        DrawRectangle(0, 0, width, height, black);
         defaultText.draw;
 
-        white.ClearBackground;
+        black.ClearBackground;
     }

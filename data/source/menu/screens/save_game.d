@@ -1,20 +1,20 @@
 module menu.screens.save_game;
+import menu.clickable_text;
+import menu.screens.selection;
+import menu.screens.options;
 import raylib;
 import raylib_misc;
 
-    void setScreenSaveGame()
+    //Used for testing will be redo
+    void displayScreenSaveGame()
     {
-        //TEMP - METTRE LE WIDTH ET HEIGHT EN PUBLIC POUR Y ACCEDER DEPUIS LES OPTIONS CHOISI
-        auto width = 1080;
-        auto height = 720;
-        Text defaultText = new Text("SaveGame", width / 2 , height / 2 ,20, white);
+        Text defaultText = new Text("SaveGame", widthScreen / 2 , heightScreen / 2 ,20, white);
 
         BeginDrawing;
             scope (exit) EndDrawing;
 
-        DrawRectangle(0, 0, width, height, black);
         defaultText.draw;
 
-        white.ClearBackground;
+        black.ClearBackground;
     }
 
