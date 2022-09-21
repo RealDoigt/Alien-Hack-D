@@ -11,4 +11,5 @@ public
     import menu.screens.failed;
     import menu.screens.options;
     import menu.screens.controls;
+    import menu.screens.start;
 }

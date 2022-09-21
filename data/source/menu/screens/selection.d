@@ -1,5 +1,6 @@
 module menu.screens.selection;
 import menu.screens;
+import raylib;
 
   //Enum of all available screens
   enum Screens
@@ -7,11 +8,13 @@ import menu.screens;
     main_menu,
     game,
     success,
+    start,
     failed,
     options,
     controls,
     save_game,
-    load_game
+    load_game,
+    quit,
   }
 
   auto currentScreen = Screens.success;
@@ -19,7 +22,7 @@ import menu.screens;
   //Function to switch btw all screens available to the player
   void displayCurrentScreen() 
   {
-    final switch (currentScreen) 
+    switch (currentScreen) 
     {
         case Screens.main_menu:
           displayScreenMainMenu;
@@ -29,6 +32,9 @@ import menu.screens;
           break;
         case Screens.success:
           displayScreenSuccess;
+          break;
+        case Screens.start:
+          displayScreenStart;
           break;
         case Screens.failed:
           displayScreenFailed;
@@ -44,6 +50,9 @@ import menu.screens;
           break;
         case Screens.load_game:
           displayScreenLoadGame;
+          break;
+        default: 
+          CloseWindow;
           break;
     }
   }
