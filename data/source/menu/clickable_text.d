@@ -35,8 +35,8 @@ class ClickableText : Text
     {
         if(area.checkCollision(GetMousePosition))
         {
-            this.color = green;
-            this.draw;
+            color = green;
+            draw;
         }
     }
 

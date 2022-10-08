@@ -12,7 +12,10 @@ void main()
 
     while (!WindowShouldClose)
     {
-        
         displayCurrentScreen;
+
+        BeginDrawing;
+        scope (exit) EndDrawing;
+        black.ClearBackground;
     }
 }

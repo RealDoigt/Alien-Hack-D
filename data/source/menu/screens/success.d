@@ -1,12 +1,5 @@
 module menu.screens.success;
-import menu.clickable_text;
-import menu.screens.selection;
-import menu.screens.options;
-import raylib_misc;
-import raylib_misc.shapes.rectangle;
-import std.experimental.logger;
-import raylib;
-import std.string;
+import menu.screens.common_import;
     
     //Will be integrated later when we have the time of the game
     string timerLeft = "Time remaining :%7.2f sec".format(15.50);
@@ -14,9 +7,6 @@ import std.string;
     //Function to display the Success screen to the player
     void displayScreenSuccess()
     {
-        int positionLabelX = widthScreen / 2 - 50,
-            positionLabelY = heightScreen / 2;
-
         ClickableText[] labelClickable = 
         [
             new ClickableText(Screens.main_menu, "Continue", positionLabelX, positionLabelY + (20), 20),
@@ -30,16 +20,5 @@ import std.string;
             new Text(timerLeft, positionLabelX, 20, 20, white),
         ];
 
-        BeginDrawing;
-            scope (exit) EndDrawing;
-
-            foreach (text; labelNotClickable) text.draw;
-            foreach (clickText; labelClickable)
-            {
-                clickText.draw;
-                clickText.onClick;
-                clickText.onHover;
-            }
-           
-            black.ClearBackground;
+        displayScreen(labelClickable, labelNotClickable);
     }
