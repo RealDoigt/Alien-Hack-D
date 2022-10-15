@@ -7,6 +7,7 @@ class ClickableImage : Rect
     {
         Img normalImage, hoverImage, activeImage;
         Tx2d texture;
+        bool isActive = false;
     }
 
     this(int x, int y, string imagePath, string hoverImagePath, string activeImagePath)
@@ -29,8 +30,26 @@ class ClickableImage : Rect
             activeImage.resize(width, height);
     }
 
-    void OnClick()
+    // call this after calling onHover(), not before
+    void onClick(void delegate() d)
     {
+        if (MOUSE_LEFT_BUTTON.IsMouseButtonPressed && checkCollision(GetMousePosition))
+        {
+            texture.update(activeImage);
+            d;
+        }
+    }
+
+    void onHover()
+    {
+        if (checkCollision(GetMousePosition))
+            texture.update(hoverImage);
+    }
+
+    void onExit()
+    {
+        if (!checkCollision(GetMousePosition))
+            texture.update(normalImage);
     }
 
     void draw()
