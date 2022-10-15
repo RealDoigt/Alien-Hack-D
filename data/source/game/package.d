@@ -2,6 +2,7 @@ module game;
 
 public 
 {
+    import game.clickable_image;
     import game.exceptions;
     import game.globals;
     import game.level;
