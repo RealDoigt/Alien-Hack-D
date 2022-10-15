@@ -7,7 +7,6 @@ class ClickableImage : Rect
     {
         Img normalImage, hoverImage, activeImage;
         Tx2d texture;
-        bool isActive = false;
     }
 
     this(int x, int y, string imagePath, string hoverImagePath, string activeImagePath)
