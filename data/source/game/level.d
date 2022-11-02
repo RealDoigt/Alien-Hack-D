@@ -1,36 +1,8 @@
 module game.level;
 import std.string;
-import game.bits;
+import std.conv;
 import raylib;
-
-class LevelSizeTooSmallException : Exception
-{
-    this(string file)
-    {
-        super("The level %s is too small".format(file), __FILE__, __LINE__);
-    }
-}
-
-class LevelFileNotFoundException : Exception
-{
-    this(string file)
-    {
-        super("The level %s couldn't be found".format(file), __FILE__, __LINE__);
-    }
-}
-
-class InvalidBitTypeException : Exception
-{
-    this(ubyte value)
-    {
-        super
-        (
-            "Number %d doesn't correspond to an extant bit type".format(value), 
-            __FILE__, 
-            __LINE__
-        );
-    }
-}
+import game;
 
 class Level
 {
@@ -139,5 +111,47 @@ class Level
             nots,
             concatBitsToString
         );
+    }
+
+    void toggle(int x, int y, bool activateEffect = false)
+    {
+        // the virus bit will be out of bounds if on any of the sides
+        if (x < bits[0].length || y < bits.length)
+        {
+            bits[y][x].isAlive = !bits[y][x].isAlive;
+            if (activateEffect) bits[y][x].changeState(this, x, y);
+        }
+    }
+
+    auto isAlive(int x, int y)
+    {
+        // the explosive and virus bit will be out of bounds if on any of the sides
+        if (x >= bits[0].length || y >= bits.length)
+            return false;
+
+        return bits[y][x].isAlive;
+    }
+
+    auto getSolution()
+    {
+        char[8] result;
+
+        for (int i = 0; i < 8; ++i)
+            result[7 - i] = (solution << (7 - i)) >> 7 ? '1' : '0';
+
+        return result.to!string;
+    }
+
+    auto toRealBits(int row)
+    {
+        if (row >= bits.length || row < 0) 
+            throw new RowOutOfLevelRangeException(row, bits.length);
+
+        ubyte result, x = 8; 
+
+        foreach (bit; bits[row])
+            result |= cast(ubyte)bit.isAlive << --x;
+
+        return result;
     }
 }
