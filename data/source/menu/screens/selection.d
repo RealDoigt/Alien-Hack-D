@@ -17,7 +17,7 @@ import raylib;
     quit,
   }
 
-  auto currentScreen = Screens.success;
+  auto currentScreen = Screens.failed;
 
   //Function to switch btw all screens available to the player
   void displayCurrentScreen() 
@@ -44,6 +44,9 @@ import raylib;
           break;
         case Screens.controls:
           displayScreenControls;
+          break;
+        case Screens.new_game:
+          displayScreenNewGame;
           break;
         case Screens.save_game:
           displayScreenSaveGame;
