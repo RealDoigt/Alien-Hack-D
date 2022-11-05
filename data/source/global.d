@@ -1,5 +1,6 @@
 module global;
-import menu.screens.options;
+import menu;
+import game;
 
 //Used to position text in screen - ENUM TEMPORARY will be changed when we arrived at options formating for an int
 enum widthScreen = 1080;
@@ -13,3 +14,5 @@ int spacePosY = 20;
 
 //Used to change FontSize of label in screen (default 20)
 int fontSize = 20;
+
+Level activeLevel;
