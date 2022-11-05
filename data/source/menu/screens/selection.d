@@ -12,6 +12,7 @@ import raylib;
     failed,
     options,
     controls,
+    new_game,
     save_game,
     load_game,
     quit,
