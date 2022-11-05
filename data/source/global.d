@@ -1,7 +1,7 @@
 module global;
 import menu.screens.options;
 
-//Used to position text in screen
+//Used to position text in screen - ENUM TEMPORARY will be changed when we arrived at options formating for an int
 enum widthScreen = 1080;
 enum heightScreen = 720;
 
