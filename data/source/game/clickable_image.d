@@ -1,5 +1,6 @@
 module game.clickable_image;
 import raylib_misc;
+import raylib;
 
 class ClickableImage : Rect
 {
@@ -35,7 +36,7 @@ class ClickableImage : Rect
         if (MOUSE_LEFT_BUTTON.IsMouseButtonPressed && checkCollision(GetMousePosition))
         {
             texture.update(activeImage);
-            d;
+            d();
         }
     }
 
@@ -51,7 +52,7 @@ class ClickableImage : Rect
             texture.update(normalImage);
     }
 
-    void draw()
+    override void draw()
     {
         texture.draw(x, y);
     }
