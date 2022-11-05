@@ -1,6 +1,7 @@
 import raylib_misc;
 import raylib;
 import game;
+import menu;
 
 void main()
 {
@@ -11,12 +12,10 @@ void main()
 
     while (!WindowShouldClose)
     {
+        displayCurrentScreen;
+
         BeginDrawing;
         scope (exit) EndDrawing;
-        
-        // code de test
-        (level.toString ~ "\0").ptr.DrawText(0, 0, 8, black);
-
-        white.ClearBackground;
+        black.ClearBackground;
     }
 }
