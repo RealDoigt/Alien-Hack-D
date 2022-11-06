@@ -16,3 +16,7 @@ int spacePosY = 20;
 int fontSize = 20;
 
 Level activeLevel;
+
+ClickableImage xorButton, andButton;
+
+auto getImagePath(string name) {return "img/" ~ name ~ ".png"; }
