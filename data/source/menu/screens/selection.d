@@ -1,5 +1,6 @@
 module menu.screens.selection;
 import menu.screens;
+import game;
 import raylib;
 
   //Enum of all available screens
@@ -17,7 +18,7 @@ import raylib;
     quit,
   }
 
-  auto currentScreen = Screens.success;
+  auto currentScreen = Screens.game;
 
   //Function to switch btw all screens available to the player
   void displayCurrentScreen() 
@@ -28,7 +29,7 @@ import raylib;
           displayScreenMainMenu;
           break;
         case Screens.game:
-          displayScreenGame;
+          displayGameplay;
           break;
         case Screens.success:
           displayScreenSuccess;
