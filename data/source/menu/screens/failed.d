@@ -16,7 +16,7 @@ void displayScreenFailed()
         Text[] labelNotClickable = 
         [
             new Text("Failed!!!", positionLabelX, 0, fontSize, white),
-            new Text("Timer ran out!!!", positionLabelX, 20, fontSize, white),
+            new Text("Timer ran out!!!", positionLabelX, spacePosY, fontSize, white),
         ];
 
         displayScreen(labelClickable, labelNotClickable);
