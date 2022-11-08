@@ -11,7 +11,7 @@ import menu.screens.common_import;
         [
             new ClickableText(Screens.main_menu, "Continue", positionLabelX, positionLabelY + spacePosY, fontSize),
             new ClickableText(Screens.save_game, "Save Game", positionLabelX, positionLabelY + spacePosY * 2, fontSize),
-            new ClickableText(Screens.main_menu, "Return to main menu", positionLabelX, positionLabelY + spacePosY * 3, fontSize),
+            new ClickableText(Screens.main_menu, "Main menu", positionLabelX, positionLabelY + spacePosY * 3, fontSize),
         ];
         
         Text[] labelNotClickable = 
