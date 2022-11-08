@@ -11,4 +11,4 @@ int positionLabelX = widthScreen / 2 - 50,
 //Used to change FontSize of label in screen (default 20) + spacing for label
 //ENUM TEMP
 enum fontSize = 40;
-auto spacePosY = fontSize;
+int spacePosY = fontSize;
