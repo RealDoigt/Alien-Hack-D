@@ -1,4 +1,4 @@
 *.o
 data/.dub/*
-data/raylib_misc/*
+data/source/raylib_misc/*
 data/the_alien_hack
