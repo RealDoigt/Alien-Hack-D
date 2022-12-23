@@ -11,3 +11,5 @@ then
 fi
 
 wget -O temporary.zip $location
+unzip -d ./raylib_misc/ temporary.zip
+rm temporary.zip
