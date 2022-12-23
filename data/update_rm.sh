@@ -1,17 +1,22 @@
 #!/bin/bash
 
+# this deletes the raylib_misc folder to avoid having rogue files remain when a different version is pasted in
 rm -r ./raylib_misc/
 
 location='https://github.com/RealDoigt/raylib_misc/archive/refs/heads/'
+branch='main'
 
 # check if the branch argument is set
-if [ -z $1 ];
+if [ ! -z $1 ];
 then
-    location="${location}main.zip"
-    else
-    location="$location${1}.zip"
+    branch=$1
 fi
 
+location="$location${branch}.zip"
+
 wget -O temporary.zip $location
-unzip -d ./raylib_misc/ temporary.zip
+unzip -d ./temporary/ temporary.zip
 rm temporary.zip
+
+mv ./temporary/raylib_misc-"$branch"/lib/ ./source/raylib_misc/
+rm -r ./temporary/
