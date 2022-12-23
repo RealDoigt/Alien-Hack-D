@@ -7,7 +7,7 @@ if [ -z $1 ];
 then
     location="${location}main.zip"
     else
-    location="$location$1"
+    location="$location${1}.zip"
 fi
 
 wget -O temporary.zip $location
