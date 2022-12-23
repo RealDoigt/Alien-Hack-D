@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -r ./raylib_misc/
+
 location='https://github.com/RealDoigt/raylib_misc/archive/refs/heads/'
 
 # check if the branch argument is set
