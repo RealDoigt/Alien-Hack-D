@@ -9,3 +9,5 @@ then
     else
     location="${location}main.zip"
 fi
+
+wget -O temporary.zip $location
