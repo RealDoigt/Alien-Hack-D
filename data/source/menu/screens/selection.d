@@ -47,7 +47,7 @@ import raylib;
           displayScreenControls;
           break;
         case Screens.new_game:
-          displayScreenNewGame;
+          displaySreenNewGame;
           break;
         case Screens.save_game:
           displayScreenSaveGame;
