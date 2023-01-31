@@ -1,9 +1,9 @@
-module menu.clickable_text;
+module menu.clickable_text_ah;
 import menu;
 import raylib;
 import raylib_misc;
 
-class ClickableText : Text
+class ClickableTextWithRedirect : Text
 {
     private
     {
