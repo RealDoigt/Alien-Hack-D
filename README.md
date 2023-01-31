@@ -35,5 +35,5 @@ have special abilities. Here's a list of all the bits in the game:
 * Normal: this bit has no special ability and represents most of the bits that can be encountered in the game. Shift actions will generate normal bits.
 * Explosive: if it's sandwiched between two bits equal to 1 on the vertical axis, those bits and itself become 0 unless the explosive bit is already 0.
 * Virus: all adjacent bits become 1 when there's a change in the byte line unless the virus bit is 0.
-* Wise: no matter what, it will was match the same value as the bit which holds the same position in the solution.
+* Wise: no matter what, it will match the same value as the bit which holds the same position in the solution.
 * Zombie: Except under some circumstances, it's value is inverted whenever there's a byte line change.
