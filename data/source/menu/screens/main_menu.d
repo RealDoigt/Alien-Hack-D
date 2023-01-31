@@ -3,11 +3,11 @@ import menu.screens.common_import;
 
     void displayScreenMainMenu()
     {
-        ClickableText[] labelClickable = 
+        ClickableTextWithRedirect[] labelClickable = 
         [
-            new ClickableText(Screens.start, "Start", positionLabelX, positionLabelY + spacePosY, fontSize),
-            new ClickableText(Screens.options, "Options", positionLabelX, positionLabelY + spacePosY * 2, fontSize),
-            new ClickableText(Screens.quit, "Quit", positionLabelX, positionLabelY + spacePosY * 3, fontSize),
+            new ClickableTextWithRedirect(Screens.start, "Start", positionLabelX, positionLabelY + spacePosY, fontSize),
+            new ClickableTextWithRedirect(Screens.options, "Options", positionLabelX, positionLabelY + spacePosY * 2, fontSize),
+            new ClickableTextWithRedirect(Screens.quit, "Quit", positionLabelX, positionLabelY + spacePosY * 3, fontSize),
         ];
         
         //Measure Text will be modify and updated when we find the official Name for the game

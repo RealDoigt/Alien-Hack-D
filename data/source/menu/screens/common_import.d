@@ -2,7 +2,7 @@ module menu.screens.common_import;
 
 public 
 {
-    import menu.clickable_text;
+    import menu.clickable_text_ah;
     import menu.screens.selection;
     import menu.display_screen;
     import global;
