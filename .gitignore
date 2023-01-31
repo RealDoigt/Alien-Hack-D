@@ -1,4 +1,8 @@
+
+dada/the_alien_hack
+dada/the_alien_hack
 *.o
-data/.dub/*
-data/source/raylib_misc/*
+data/.dub/build/application-debug-linux.posix-x86_64-ldc_v1.29.0-979654C4578A89B445B4D2B376A94D5C/the_alien_hack
+data/dada
+data/dada
 data/the_alien_hack
