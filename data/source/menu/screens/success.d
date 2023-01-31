@@ -7,11 +7,11 @@ import menu.screens.common_import;
     //Function to display the Success screen to the player -- Screens.main_menu for continue button will be change later
     void displayScreenSuccess()
     {
-        ClickableText[] labelClickable = 
+        ClickableTextWithRedirect[] labelClickable = 
         [
-            new ClickableText(Screens.main_menu, "Continue", positionLabelX, positionLabelY + spacePosY, fontSize),
-            new ClickableText(Screens.save_game, "Save Game", positionLabelX, positionLabelY + spacePosY * 2, fontSize),
-            new ClickableText(Screens.main_menu, "Main menu", positionLabelX, positionLabelY + spacePosY * 3, fontSize),
+            new ClickableTextWithRedirect(Screens.main_menu, "Continue", positionLabelX, positionLabelY + spacePosY, fontSize),
+            new ClickableTextWithRedirect(Screens.save_game, "Save Game", positionLabelX, positionLabelY + spacePosY * 2, fontSize),
+            new ClickableTextWithRedirect(Screens.main_menu, "Main menu", positionLabelX, positionLabelY + spacePosY * 3, fontSize),
         ];
         
         Text[] labelNotClickable = 

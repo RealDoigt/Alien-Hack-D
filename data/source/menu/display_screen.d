@@ -3,7 +3,7 @@ import menu;
 import raylib;
 import raylib_misc;
 
-void displayScreen(ClickableText[] labelClickable, Text[] labelNotClickable)
+void displayScreen(ClickableTextWithRedirect[] labelClickable, Text[] labelNotClickable)
 {
     foreach (text; labelNotClickable) text.draw;
     foreach (clickText; labelClickable)
