@@ -1,12 +1,15 @@
 module game.bits.virus;
 import game.bits.bit;
+import raylib_misc;
 import game.level;
+import raylib;
 
 class Virus : Bit
 {
     this (bool isAlive)
     {
         super(isAlive);
+        color = purple;
     }
 
     override void changeState(Level level, int x, int y)
