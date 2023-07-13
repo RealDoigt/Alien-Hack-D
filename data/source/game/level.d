@@ -113,6 +113,16 @@ class Level
         );
     }
 
+    auto width()
+    {
+        return cast(int)bits[0].length;
+    }
+
+    auto height()
+    {
+        return cast(int)bits.length;
+    }
+
     void toggle(int x, int y, bool activateEffect = false)
     {
         // the virus bit will be out of bounds if on any of the sides
