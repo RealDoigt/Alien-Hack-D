@@ -1,5 +1,6 @@
 import raylib_misc;
 import raylib;
+import global;
 import game;
 import menu;
 
