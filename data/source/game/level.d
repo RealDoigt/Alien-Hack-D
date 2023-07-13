@@ -8,7 +8,7 @@ class Level
 {
     enum maxWidth = 8;
 
-    private 
+    private
     {
         Bit[][] bits;
         ubyte solution,
@@ -42,7 +42,7 @@ class Level
         uint bytes;
 
         ubyte* data = file.ptr.LoadFileData(&bytes);
-        scope (exit) data.UnloadFileData; 
+        scope (exit) data.UnloadFileData;
 
         // it is impossible to have a smaller level without incomplete data
         if (bytes < 15) throw new LevelSizeTooSmallException(file);
@@ -60,27 +60,27 @@ class Level
         for (int y = 0; y < data[0]; ++y)
             for (int x = 0; x < maxWidth; ++x)
             {
-                /* 
+                /*
                     the 8th byte (or 7th in the index order) is the byte
                     where the data on the bits starts
-                */ 
+                */
                 ubyte value = data[y * maxWidth + x + 7];
                 auto isAlive = cast(bool)(value & 1);
-                
-                /* 
+
+                /*
                     un bit est arrangé comme suit où b est le booléen d'activité
                     et t et le type de bit: 0000 tttb
                 */
                 switch (value >> 1)
                 {
-                    case 1: 
-                        bits[y][x] = new Bit(isAlive); 
+                    case 1:
+                        bits[y][x] = new Bit(isAlive);
                         break;
 
                     case 2:
                         bits[y][x] = new Explosive(isAlive);
                         break;
-                    
+
                     case 3:
                         bits[y][x] = new Virus(isAlive);
                         break;
@@ -144,10 +144,10 @@ class Level
 
     auto toRealBits(int row)
     {
-        if (row >= bits.length || row < 0) 
+        if (row >= bits.length || row < 0)
             throw new RowOutOfLevelRangeException(row, bits.length);
 
-        ubyte result, x = 8; 
+        ubyte result, x = 8;
 
         foreach (bit; bits[row])
             result |= cast(ubyte)bit.isAlive << --x;
@@ -158,5 +158,10 @@ class Level
     auto isSolved()
     {
         return toRealBits(cast(int)bits.length - 1) == solution;
+    }
+
+    auto getColor(int x, int y)
+    {
+        return bits[y][x].getColor;
     }
 }
