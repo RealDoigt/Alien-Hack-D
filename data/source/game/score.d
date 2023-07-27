@@ -10,7 +10,7 @@ struct Score
     
     private
     {
-        ubyte getScrambledMonth()
+        ubyte scrambledMonth()
         {
             final switch (date.month)
             {
@@ -29,9 +29,20 @@ struct Score
             }
         }
         
-        ubyte getYearDifference()
+        auto yearDifference()
         {
-            return date.year - 2023;
+            return cast(ubyte)(date.year - 2023);
+        }
+        
+        ubyte postmeridiem()
+        {
+            return time.hour > 12;
+        }
+        
+        auto time12()
+        {
+            auto result = cast(ubyte)(time.hour - 12);
+            return result ? result : 12;
         }
     }
     
