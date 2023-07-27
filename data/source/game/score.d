@@ -17,4 +17,23 @@ struct Score
         if (time.second < other.time.second)       return true;
         return false;
     }
+    
+    ubyte getScrambledMonth()
+    {
+        final switch (date.month)
+        {
+            case Month.jan: return 15;
+            case Month.feb: return  5;
+            case Month.mar: return 11;
+            case Month.apr: return 13;
+            case Month.may: return  9;
+            case Month.jun: return  2;
+            case Month.jul: return  7;
+            case Month.aug: return  0;
+            case Month.sep: return  3;
+            case Month.oct: return  8;
+            case Month.nov: return 14;
+            case Month.dec: return 10;
+        }
+    }
 }
