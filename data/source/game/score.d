@@ -36,4 +36,9 @@ struct Score
             case Month.dec: return 10;
         }
     }
+    
+    ubyte getYearDifference()
+    {
+        return date.year - 2023;
+    }
 }
