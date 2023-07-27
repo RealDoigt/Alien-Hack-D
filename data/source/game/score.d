@@ -8,6 +8,33 @@ struct Score
     TimeOfDay time;
     ushort milliseconds;
     
+    private
+    {
+        ubyte getScrambledMonth()
+        {
+            final switch (date.month)
+            {
+                case Month.jan: return 15;
+                case Month.feb: return  5;
+                case Month.mar: return 11;
+                case Month.apr: return 13;
+                case Month.may: return  9;
+                case Month.jun: return  2;
+                case Month.jul: return  7;
+                case Month.aug: return  0;
+                case Month.sep: return  3;
+                case Month.oct: return  8;
+                case Month.nov: return 14;
+                case Month.dec: return 10;
+            }
+        }
+        
+        ubyte getYearDifference()
+        {
+            return date.year - 2023;
+        }
+    }
+    
     auto isEarlier(Score other)
     {
         if (date.year < other.date.year)           return true;
@@ -18,27 +45,14 @@ struct Score
         return false;
     }
     
-    ubyte getScrambledMonth()
+    auto getBytes()
     {
-        final switch (date.month)
-        {
-            case Month.jan: return 15;
-            case Month.feb: return  5;
-            case Month.mar: return 11;
-            case Month.apr: return 13;
-            case Month.may: return  9;
-            case Month.jun: return  2;
-            case Month.jul: return  7;
-            case Month.aug: return  0;
-            case Month.sep: return  3;
-            case Month.oct: return  8;
-            case Month.nov: return 14;
-            case Month.dec: return 10;
-        }
-    }
-    
-    ubyte getYearDifference()
-    {
-        return date.year - 2023;
+        ubyte[7] result;
+        
+        result[0] = levelID;
+        result[1] = cast(ubyte)(milliseconds >> 8);
+        result[2] = cast(ubyte)(milliseconds & 255);
+        
+        return result;
     }
 }
