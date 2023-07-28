@@ -39,10 +39,16 @@ struct Score
             return time.hour > 12;
         }
         
-        auto time12()
+        auto hour12()
         {
             auto result = cast(ubyte)(time.hour - 12);
             return result ? result : 12;
+        }
+        
+        // to avoid the extra verbose cast(ubyte)time.minute;
+        ubyte minute()
+        {
+            return time.minute;
         }
     }
     
