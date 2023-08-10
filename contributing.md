@@ -85,7 +85,7 @@ class MyClass
 ```
 However, while this will not be enforced, the longer lines _should_ be on top and the smaller lines _should_ be at the bottom.
 
-11. For functions with a long parameter list, apply the Allman brace style. Do this:
+10. For functions with a long parameter list, apply the Allman brace style. Do this:
 ```d
 void myFunctionWithLotsOfParams
 (
@@ -120,8 +120,8 @@ void myFunctionWithLotsOfParams(type param, type param, type param, type param, 
 }
 ```
 This also applies to any array initialisation, statement and function call. You know you have a line that is too long and which needs the above treatment when your line wraps around in your editor (keep it around 80~100 columns) or if your array being initialised has more than 3 elements.
-12. If there is only one line of code after your statement, then the braces must be omitted.
-13. For single-line control flow statements, the code which follows must be on the same line as the statement if the statement has only one condition or if it is a very short for/foreach declaration. This does not apply if the statements are nested.
+11. If there is only one line of code after your statement, then the braces must be omitted.
+12. For single-line control flow statements, the code which follows must be on the same line as the statement if the statement has only one condition or if it is a very short for/foreach declaration. This does not apply if the statements are nested.
 ```d
 // CORRECT
 if (myVar % 2 == 0) myVar = someNewValue;
