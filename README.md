@@ -7,6 +7,12 @@ This project was originally started in C, you can find the original project file
 ### Wait! Wasn't this supposed to be a SteamDeck native game?
 Yes, however our release deadline is very soon so we're running out of time. Unfortunately, we will have to do without the SteamDeck.
 
+### How to Build
+1. Open the terminal.
+2. `cd data`
+3. `./update_rm.sh`
+4. `dub build`
+
 ### How does it play?
 For now, not much is actually going on in the game since there is still a lot left unimplemented, but we're steadily making our way there. 
 In the meantime here's the planned gameplay for our game:
