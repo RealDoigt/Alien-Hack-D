@@ -7,6 +7,7 @@ Before you even begin, you have to contact Doigt by direct message on Discord. Y
 3. Rule 2 doesn't apply if you forked the project.
 4. No merge without a code review from someone other than the author of the PR.
 5. Rule 4 doesn't apply to Doigt if the changes are only text documents.
+6. No merge can be done if the branch or fork being merged in has any commit behind main.
 
 ## Style Conventions
 We mostly follow the official D style conventions which can be read [here](https://dlang.org/dstyle.html) with some alterations and additions here and there. Listed here are the differences.
@@ -59,3 +60,26 @@ b += 1;
 short c = cast(short)a;
 filter!(a => a == 42);
 ```
+4. No unittests. No asserts. No comments.
+   * Your code must compile and do what it is supposed to do.
+   * If your code needs a comment to explain what it does, then your code needs to be rewritten.
+     * Exception: If you use bitwise or bitshift operators, you MUST comment.
+     * Exception: You are doing low level optimisations.
+6. Each class, struct and union must be in its own module.
+7. Modules which do similar things must be group together in their own super module and that super module must have its own folder.
+8. No preference for local vs global imports. Keep in mind that the project prefers an architecture where each thing is its own module,
+9. Don't use annotations.
+10. No preference for variable declaration style, so both of these are good:
+```d
+class MyClass
+{
+    // good
+    int    a;
+    double b;
+
+    // good
+    double y;
+    int x;
+}
+```
+However, while this will not be enforced, the longer lines _should_ be on top and the smaller lines below.
