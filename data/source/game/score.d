@@ -7,7 +7,7 @@ struct Score
     ubyte levelID;
     TimeOfDay time;
     ushort milliseconds;
-    
+
     private
     {
         ubyte scrambledMonth()
@@ -28,30 +28,30 @@ struct Score
                 case Month.dec: return 10;
             }
         }
-        
+
         auto yearDifference()
         {
             return cast(ubyte)(date.year - 2023);
         }
-        
+
         ubyte postmeridiem()
         {
             return time.hour > 12;
         }
-        
+
         auto hour12()
         {
             auto result = cast(ubyte)(time.hour - 12);
             return result ? result : 12;
         }
-        
+
         // to avoid the extra verbose cast(ubyte)time.minute;
         ubyte minute()
         {
             return time.minute;
         }
     }
-    
+
     auto isEarlier(Score other)
     {
         if (date.year < other.date.year)           return true;
@@ -61,15 +61,15 @@ struct Score
         if (time.second < other.time.second)       return true;
         return false;
     }
-    
+
     auto getBytes()
     {
         ubyte[7] result;
-        
+
         result[0] = levelID;
         result[1] = cast(ubyte)(milliseconds >> 8);
         result[2] = cast(ubyte)(milliseconds & 255);
-        
+
         return result;
     }
 }
