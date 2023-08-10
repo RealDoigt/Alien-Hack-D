@@ -9,6 +9,53 @@ Before you even begin, you have to contact Doigt by direct message on Discord. Y
 5. Rule 4 doesn't apply to Doigt if the changes are only text documents.
 
 ## Style Conventions
-We mostly follow the official D style conventions which can be read [here](https://dlang.org/dstyle.html).
+We mostly follow the official D style conventions which can be read [here](https://dlang.org/dstyle.html) with some alterations and additions here and there. Listed here are the differences.
 
+1. If we can use UFCS, we use it. This contrary to the official D style conventions.
+2. There should always be an empty line between statements. So something like this example from the page linked above violates our style conventions:
+```d
+if (…)
+{
+    …
+}
+else if (…)
+{
+    …
+}
+```
+Instead, do this:
+```d
+if (…)
+{
+    …
+}
 
+else if (…)
+{
+    …
+}
+```
+3. No spacing for `cast` and `..`, so this example from the page linked above violates our style conventions:
+```d
+a + b
+a / b
+a == b
+a && b
+arr[1 .. 2] // WRONG
+int a = 100;
+b += 1;
+short c = cast(short) a; // WRONG
+filter!(a => a == 42);
+```
+Do this instead:
+```d
+a + b
+a / b
+a == b
+a && b
+arr[1..2]
+int a = 100;
+b += 1;
+short c = cast(short)a;
+filter!(a => a == 42);
+```
