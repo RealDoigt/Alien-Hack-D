@@ -84,6 +84,7 @@ class MyClass
 }
 ```
 However, while this will not be enforced, the longer lines _should_ be on top and the smaller lines _should_ be at the bottom.
+
 11. For functions with a long parameter list, apply the Allman brace style. Do this:
 ```d
 void myFunctionWithLotsOfParams
