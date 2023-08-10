@@ -4,6 +4,9 @@ We are working on this game as a way to explore native Linux game development in
 It is a stepping stone to a future filled with much greater projects.
 This project was originally started in C, you can find the original project files [here](https://github.com/RealDoigt/Alien-Hack-C).
 
+### How Can I Contribute?
+[Read this](contributing.md)
+
 ### Wait! Wasn't this supposed to be a SteamDeck native game?
 Yes, however our release deadline is very soon so we're running out of time. Unfortunately, we will have to do without the SteamDeck.
 
