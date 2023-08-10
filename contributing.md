@@ -68,7 +68,7 @@ filter!(a => a == 42);
      * Exception: You are doing low level optimisations.
 6. Each class, struct and union must be in its own module.
 7. Modules which do similar things must be grouped together in their own super module and that super module must have its own folder and a `package.d`.
-8. No preference for local vs global imports. Keep in mind that the project prefers an architecture where each thing is its own module,
+8. No preference for local vs global imports. Keep in mind that the project prefers an architecture where each thing is its own module, so you could end up with lots of imports if you don't import the whole package instead of only what you need at the local level.
 9. Don't use annotations.
 10. No preference for variable declaration style, so both of these are good:
 ```d
