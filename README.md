@@ -1,8 +1,11 @@
 # Alien-Hack
-Welcome to the Alien-Hack, a work in progress puzzle game for the SteamDeck (although we're currently testing it on Manjaro).
-We are working on this game as a way to explore native Linux/SteamDeck game development. 
+Welcome to the Alien-Hack, a work in progress puzzle game for Linux.
+We are working on this game as a way to explore native Linux game development in D and also as a testing ground for the raylib_misc. 
 It is a stepping stone to a future filled with much greater projects.
 This project was originally started in C, you can find the original project files [here](https://github.com/RealDoigt/Alien-Hack-C).
+
+### Wait! Wasn't this supposed to be a SteamDeck native game?
+Yes, however our release deadline is very soon so we're running out of time. Unfortunately, we will have to do without the SteamDeck.
 
 ### How does it play?
 For now, not much is actually going on in the game since there is still a lot left unimplemented, but we're steadily making our way there. 
