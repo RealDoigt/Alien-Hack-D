@@ -1,8 +1,20 @@
 # Alien-Hack
-Welcome to the Alien-Hack, a work in progress puzzle game for the SteamDeck (although we're currently testing it on Manjaro).
-We are working on this game as a way to explore native Linux/SteamDeck game development. 
+Welcome to the Alien-Hack, a work in progress puzzle game for Linux.
+We are working on this game as a way to explore native Linux game development in D and also as a testing ground for the raylib_misc. 
 It is a stepping stone to a future filled with much greater projects.
 This project was originally started in C, you can find the original project files [here](https://github.com/RealDoigt/Alien-Hack-C).
+
+### How Can I Contribute?
+[Read this](contributing.md)
+
+### Wait! Wasn't this supposed to be a SteamDeck native game?
+Yes, however our release deadline is very soon so we're running out of time. Unfortunately, we will have to do without the SteamDeck.
+
+### How to Build
+1. Open the terminal.
+2. `cd data`
+3. `./update_rm.sh`
+4. `dub build`
 
 ### How does it play?
 For now, not much is actually going on in the game since there is still a lot left unimplemented, but we're steadily making our way there. 
@@ -36,4 +48,4 @@ have special abilities. Here's a list of all the bits in the game:
 * Explosive: if it's sandwiched between two bits equal to 1 on the vertical axis, those bits and itself become 0 unless the explosive bit is already 0.
 * Virus: all adjacent bits become 1 when there's a change in the byte line unless the virus bit is 0.
 * Wise: no matter what, it will match the same value as the bit which holds the same position in the solution.
-* Zombie: Except under some circumstances, it's value is inverted whenever there's a byte line change.
+* Zombie: Except under some circumstances, its value is inverted whenever there's a byte line change.
