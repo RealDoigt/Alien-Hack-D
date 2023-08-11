@@ -144,3 +144,4 @@ if (myVar % 2 == 0 && someOtherCondition) myVar = someNewValue;
 if (myVar % 2 == 0)
     myVar = someNewValue;
 ```
+14. Avoid unnamed magic constant values with unexplained meaning and multiple occurrences.
