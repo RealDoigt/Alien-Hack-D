@@ -1,6 +1,6 @@
 # Alien-Hack
 Welcome to the Alien-Hack, a work in progress puzzle game for Linux.
-We are working on this game as a way to explore native Linux game development in D and also as a testing ground for the raylib_misc. 
+We are working on this game as a way to explore native Linux game development in D and also as a testing ground for raylib_misc. 
 It is a stepping stone to a future filled with much greater projects.
 This project was originally started in C, you can find the original project files [here](https://github.com/RealDoigt/Alien-Hack-C).
 
