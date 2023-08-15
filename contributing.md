@@ -60,6 +60,10 @@ b += 1;
 short c = cast(short)a;
 filter!(a => a == 42);
 ```
+There's an exception for cases; they stay unchanged from the official style conventions:
+```d
+case 0: .. case 4:
+```
 4. No unittests. No asserts. No comments. No documentation in the code.
    * Your code must compile and do what it is supposed to do.
      * You can create a test branch to test it or write temporary test code, but that's it.
