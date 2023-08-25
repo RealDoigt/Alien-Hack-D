@@ -50,6 +50,11 @@ struct Score
         {
             return time.minute;
         }
+
+        ubyte day()
+        {
+            return time.dayOfMonth;
+        }
     }
 
     auto isEarlier(Score other)
@@ -71,6 +76,8 @@ struct Score
         result[2] = cast(ubyte)(milliseconds & 255);
         result[3] = yearDifference;
         result[4] = (scrambledMonth << 4) | hour12;
+        result[5] = (postmeridiem << 7) | (dayOfMonth << 2) | (minute >> 4);
+        result[7] = (minute & 15);
 
         return result;
     }
