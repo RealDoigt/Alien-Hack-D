@@ -12,3 +12,4 @@ int positionLabelX = widthScreen / 2 - 50,
 //ENUM TEMP
 enum fontSize = 40;
 int spacePosY = fontSize;
+char[8] currentModule;
