@@ -42,7 +42,7 @@ struct Score
         auto hour12()
         {
             auto result = time.hour - 12;
-            return cast(byte)(result < 12 && result > 0 ? result : 12);
+            return cast(ubyte)(result < 12 && result > 0 ? result : 12);
         }
 
         // to avoid the extra verbose cast(ubyte)time.minute everytime it's used.
@@ -69,6 +69,8 @@ struct Score
         result[0] = levelID;
         result[1] = cast(ubyte)(milliseconds >> 8);
         result[2] = cast(ubyte)(milliseconds & 255);
+        result[3] = yearDifference;
+        result[4] = (scrambledMonth << 4) | hour12;
 
         return result;
     }
