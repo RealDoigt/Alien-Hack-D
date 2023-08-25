@@ -54,7 +54,7 @@ struct Score
 
         ubyte day()
         {
-            return date.dayOfMonth;
+            return date.day;
         }
 
         ubyte second()
