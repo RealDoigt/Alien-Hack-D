@@ -45,7 +45,7 @@ struct Score
             return cast(byte)(result < 12 && result > 0 ? result : 12);
         }
 
-        // to avoid the extra verbose cast(ubyte)time.minute;
+        // to avoid the extra verbose cast(ubyte)time.minute everytime it's used.
         ubyte minute()
         {
             return time.minute;
