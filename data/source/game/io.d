@@ -1,6 +1,9 @@
 module game.io;
+import std.file;
 import global;
 import game;
+
+package enum fileFormat = ".bin";
 
 void save(Score[] scores, string fileName)
 {
@@ -12,4 +15,6 @@ void save(Score[] scores, string fileName)
     foreach (s; scores)
       foreach (b; s.getBytes)
         binaryData ~= b;
+
+    write(savesFolder ~ fileName ~ fileFormat, binaryData);
 }
