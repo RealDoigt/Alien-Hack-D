@@ -1,5 +1,6 @@
 module game.score;
 import std.datetime;
+import std.math;
 
 struct Score
 {
@@ -58,7 +59,13 @@ struct Score
 
         ubyte second()
         {
-          return time.second;
+            if (time.second == 9 || time.second == 8)
+                return 7 << 1;
+
+            if (time.second > 9)
+                return (cast(ubyte)floor(time.second / 10) << 1) | 1;
+
+            else return time.second;
         }
     }
 
@@ -82,7 +89,7 @@ struct Score
         result[3] = yearDifference;
         result[4] = (scrambledMonth << 4) | hour12;
         result[5] = (postmeridiem << 7) | (dayOfMonth << 2) | (minute >> 4);
-        result[7] = minute & 15;
+        result[7] = (minute & 15) << 4) | time.second;
 
         return result;
     }
