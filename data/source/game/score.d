@@ -89,7 +89,7 @@ struct Score
         result[3] = yearDifference;
         result[4] = (scrambledMonth << 4) | hour12;
         result[5] = (postmeridiem << 7) | (dayOfMonth << 2) | (minute >> 4);
-        result[6] = (minute & 15) << 4) | time.second;
+        result[6] = ((minute & 15) << 4) | second;
 
         return result;
     }
