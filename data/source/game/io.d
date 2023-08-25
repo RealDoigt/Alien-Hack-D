@@ -1,4 +1,5 @@
 module game.io;
+import global;
 import game;
 
 void save(Score[] scores, string fileName)
