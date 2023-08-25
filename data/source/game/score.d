@@ -53,7 +53,12 @@ struct Score
 
         ubyte day()
         {
-            return time.dayOfMonth;
+            return date.dayOfMonth;
+        }
+
+        ubyte second()
+        {
+          return time.second;
         }
     }
 
@@ -77,7 +82,7 @@ struct Score
         result[3] = yearDifference;
         result[4] = (scrambledMonth << 4) | hour12;
         result[5] = (postmeridiem << 7) | (dayOfMonth << 2) | (minute >> 4);
-        result[7] = (minute & 15);
+        result[7] = minute & 15;
 
         return result;
     }
