@@ -44,12 +44,6 @@ struct Score
             auto result = time.hour - 12;
             return cast(byte)(result < 12 && result > 0 ? result : 12);
         }
-
-        // to avoid the extra verbose cast(ubyte)time.minute everytime it's used.
-        ubyte minute()
-        {
-            return time.minute;
-        }
     }
 
     auto isEarlier(Score other)
@@ -69,6 +63,7 @@ struct Score
         result[0] = levelID;
         result[1] = cast(ubyte)(milliseconds >> 8);
         result[2] = cast(ubyte)(milliseconds & 255);
+        result[3] =
 
         return result;
     }
