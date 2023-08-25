@@ -63,7 +63,7 @@ struct Score
                 return 7 << 1;
 
             if (time.second > 9)
-                return (cast(ubyte)floor(time.second / 10) << 1) | 1;
+                return cast(ubyte)((cast(ubyte)floor(cast(float)time.second / 10) << 1) | 1);
 
             else return time.second;
         }
@@ -87,8 +87,8 @@ struct Score
         result[1] = cast(ubyte)(milliseconds >> 8);
         result[2] = cast(ubyte)(milliseconds & 255);
         result[3] = yearDifference;
-        result[4] = (scrambledMonth << 4) | hour12;
-        result[5] = (postmeridiem << 7) | (dayOfMonth << 2) | (minute >> 4);
+        result[4] = cast(ubyte)((scrambledMonth << 4) | hour12);
+        result[5] = cast(ubyte)((postmeridiem << 7) | (day << 2) | (minute >> 4));
         result[6] = ((minute & 15) << 4) | second;
 
         return result;
