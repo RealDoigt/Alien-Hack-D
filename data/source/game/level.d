@@ -16,7 +16,8 @@ class Level
               ors,
               xors,
               ands,
-              nots;
+              nots,
+              id;
 
         // fonction de test à enlever plus tard
         auto concatBitsToString()
@@ -38,6 +39,9 @@ class Level
     this(string file)
     {
         if (!file.ptr.FileExists) throw new LevelFileNotFoundException(file);
+        
+        // Note: Ceci va devoir changer quand l'on va mettre les niveaux dans des modules.
+        id = file.split(".")[0].to!ubyte;
 
         uint bytes;
 
