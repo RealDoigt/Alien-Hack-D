@@ -52,6 +52,15 @@ void save(Score[] scores, string fileName)
 
 auto getSaveFiles()
 {
-    auto files = dirEntries!false(savesFolder, "*" ~ fileFormat, SpanMode.shallow, false);
+    auto fileNames = dirEntries!false(savesFolder, "*" ~ fileFormat, SpanMode.shallow, false);
 
+    SaveFile[] files;
+
+    foreach (name; fileNames)
+    {
+        auto location = savesFolder ~ name;
+        files ~= new SaveFile(location, cast(ubyte[])read(location))
+    }
+
+    return files;
 }
