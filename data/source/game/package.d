@@ -1,10 +1,10 @@
 module game;
 
-public 
+public
 {
     import game.exceptions;
     import game.level;
     import game.score;
+    import game.files;
     import game.bits;
-    import game.io;
 }
