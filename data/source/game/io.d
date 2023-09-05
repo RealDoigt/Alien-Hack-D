@@ -5,6 +5,37 @@ import game;
 
 package enum fileFormat = ".bin";
 
+class GameFile
+{
+    private string fileName;
+
+    this(string fileName)
+    {
+        this.fileName = fileName;
+    }
+
+    auto getFileName()
+    {
+        return fileName;
+    }
+}
+
+class SaveFile : GameFile
+{
+    private ubyte[] binaryData;
+
+    this(string fileName, ubyte[] binaryData)
+    {
+        super(fileName);
+        this.binaryData = binaryData;
+    }
+
+    auto getBinaryData()
+    {
+        return binaryData;
+    }
+}
+
 void save(Score[] scores, string fileName)
 {
     ubyte[] binaryData;
@@ -17,4 +48,10 @@ void save(Score[] scores, string fileName)
         binaryData ~= b;
 
     write(savesFolder ~ fileName ~ fileFormat, binaryData);
+}
+
+auto getSaveFiles()
+{
+    auto files = dirEntries!false(savesFolder, "*" ~ fileFormat, SpanMode.shallow, false);
+
 }
