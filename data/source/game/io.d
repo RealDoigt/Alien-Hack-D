@@ -64,3 +64,15 @@ auto getSaveFiles()
 
     return files;
 }
+
+auto getLevelFiles(string moduleName)
+{
+    auto fileNames = dirEntries!false(savesFolder, "*" ~ fileFormat, SpanMode.shallow, false);
+
+    GameFile[] files;
+
+    foreach (name; fileNames)
+        files ~= new GameFile(modulesFolder ~ moduleName ~ name);
+
+    return files;
+}

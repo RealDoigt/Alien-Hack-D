@@ -14,3 +14,4 @@ enum fontSize = 40;
 int spacePosY = fontSize;
 char[8] currentModule;
 enum savesFolder = "saves/";
+enum modulesFolder = "modules/";
