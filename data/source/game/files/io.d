@@ -1,5 +1,6 @@
 module game.files.io;
 import std.file;
+import std.conv;
 import global;
 import game;
 
@@ -21,16 +22,19 @@ void save(Score[] scores, string fileName)
 
 auto load(SaveFile sf)
 {
-    Score[] scores;
+    auto data = sf.getBinaryData;
     char[8] newModule;
+    Score[] scores;
     Level newLevel;
 
     for (byte i; i < 8; ++i)
     {
-        if (sf.binaryData[i] == 0) break;
-        newModule[i] = cast(char)sf.binaryData[i];
+        if (data[i] == 0) break;
+        newModule[i] = cast(char)data[i];
     }
 
+    if (!isDir(modulesFolder ~ newModule))
+      throw new CannotFindModuleException(newModule);
 }
 
 auto getSaveFiles()
