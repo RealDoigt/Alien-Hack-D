@@ -34,7 +34,9 @@ auto load(SaveFile sf)
     }
 
     if (!isDir(modulesFolder ~ newModule))
-      throw new CannotFindModuleException(newModule);
+        throw new CannotFindModuleException(newModule);
+
+
 }
 
 auto getSaveFiles()
