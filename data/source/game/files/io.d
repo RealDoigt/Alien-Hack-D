@@ -21,10 +21,16 @@ void save(Score[] scores, string fileName)
 
 auto load(SaveFile sf)
 {
-    // activeLevel
     Score[] scores;
-    auto rawData = cast(ubyte[])sf.name.read;
-    
+    char[8] newModule;
+    Level newLevel;
+
+    for (byte i; i < 8; ++i)
+    {
+        if (sf.binaryData[i] == 0) break;
+        newModule[i] = cast(char)sf.binaryData[i];
+    }
+
 }
 
 auto getSaveFiles()
