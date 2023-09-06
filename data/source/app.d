@@ -8,7 +8,7 @@ void main()
     InitWindow(1080, 720, "A raylib game");
     SetTargetFPS(60);
 
-    auto level = new Level("test.dat");
+    activeLevel = new Level("test.dat");
 
     while (!WindowShouldClose)
     {

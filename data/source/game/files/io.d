@@ -3,7 +3,7 @@ import std.file;
 import global;
 import game;
 
-package enum fileFormat = ".bin";
+package enum fileFormat = ".bin", levelFormat = ".dat";
 
 void save(Score[] scores, string fileName)
 {
@@ -17,6 +17,14 @@ void save(Score[] scores, string fileName)
         binaryData ~= b;
 
     write(savesFolder ~ fileName ~ fileFormat, binaryData);
+}
+
+auto load(SaveFile sf)
+{
+    // activeLevel
+    Score[] scores;
+    auto rawData = cast(ubyte[])sf.name.read;
+    
 }
 
 auto getSaveFiles()
@@ -36,7 +44,7 @@ auto getSaveFiles()
 
 auto getLevelFiles(string moduleName)
 {
-    auto fileNames = dirEntries!false(savesFolder, "*" ~ fileFormat, SpanMode.shallow, false);
+    auto fileNames = dirEntries!false(savesFolder, "*" ~ levelFormat, SpanMode.shallow, false);
 
     GameFile[] files;
 
