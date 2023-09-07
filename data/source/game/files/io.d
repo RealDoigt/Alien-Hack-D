@@ -24,11 +24,11 @@ void save(Score[] scores, string fileName)
 auto load(SaveFile sf)
 {
     auto data = sf.getBinaryData;
-    char[8] newModule;
+    module_t newModule;
     Score[] scores;
     Level newLevel;
 
-    for (byte i; i < 8; ++i)
+    for (byte i; i < moduleSize; ++i)
     {
         if (data[i] == 0) break;
         newModule[i] = cast(char)data[i];
@@ -53,7 +53,7 @@ auto getSaveFiles()
     foreach (name; fileNames)
     {
         auto location = savesFolder ~ name;
-        files ~= new SaveFile(location, cast(ubyte[])read(location))
+        files ~= new SaveFile(location, cast(ubyte[])read(location));
     }
 
     return files;
@@ -69,4 +69,19 @@ auto getLevelFiles(string moduleName)
         files ~= new GameFile(modulesFolder ~ moduleName ~ name);
 
     return files;
+}
+
+auto getModules()
+{
+    auto modules = dirEntries!false(modulesFolder, "*", SpanMode.shallow, false);
+    module_t[] results;
+    
+    foreach (m; modules)
+        if (m.length <= moduleSize)
+        {
+            results ~= new module_t;
+            foreach (i, c; m) results[$ - 1][i] = c;
+        }
+        
+    return results;
 }

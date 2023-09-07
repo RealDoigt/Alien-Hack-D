@@ -5,6 +5,9 @@ import menu.screens.options;
 enum widthScreen = 1080;
 enum heightScreen = 720;
 
+enum moduleSize = 8;
+alias module_t = char[moduleSize];
+
 int positionLabelX = widthScreen / 2 - 50,
     positionLabelY = heightScreen / 2;
 
@@ -12,7 +15,7 @@ int positionLabelX = widthScreen / 2 - 50,
 //ENUM TEMP
 enum fontSize = 40;
 int spacePosY = fontSize;
-char[8] currentModule;
+module_t currentModule;
 enum savesFolder = "saves/";
 enum modulesFolder = "modules/";
 
