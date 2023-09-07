@@ -34,7 +34,7 @@ auto load(SaveFile sf)
         newModule[i] = cast(char)data[i];
     }
 
-    if (!isDir(modulesFolder ~ newModule))
+    if (!newModule.moduleExists)
         throw new CannotFindModuleException(newModule);
 
     currentModule = newModule;
@@ -84,4 +84,19 @@ auto getModules()
         }
         
     return results;
+}
+
+auto tutorialExists()
+{
+    return ['T', 'U', 'T', 'O', 'R', 'I', 'A', 'L'].moduleExists;
+}
+
+auto gameExists()
+{
+    return ['A', 'L', 'I', 'E', 'N', 'D', 'R', 'C'].moduleExists;
+}
+
+auto moduleExists(module_t moduleName)
+{
+    return isDir(modulesFolder ~ moduleName);
 }
