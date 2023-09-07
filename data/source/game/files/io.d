@@ -4,7 +4,8 @@ import std.conv;
 import global;
 import game;
 
-package enum fileFormat = ".bin", levelFormat = ".dat";
+package enum fileFormat = ".bin";
+enum levelFormat = ".dat";
 
 void save(Score[] scores, string fileName)
 {
@@ -36,7 +37,11 @@ auto load(SaveFile sf)
     if (!isDir(modulesFolder ~ newModule))
         throw new CannotFindModuleException(newModule);
 
-
+    currentModule = newModule;
+    
+    
+    
+    return scores;
 }
 
 auto getSaveFiles()

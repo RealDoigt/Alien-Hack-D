@@ -36,13 +36,13 @@ class Level
         }
     }
 
-    this(string file)
+    this(ubyte id)
     {
+        auto file = "%s%s/%d%s".format(modulesFolder, currentModule, id, levelFormat);
+        
         if (!file.ptr.FileExists) throw new LevelFileNotFoundException(file);
         
-        // Note: Ceci va devoir changer quand l'on va mettre les niveaux dans des modules.
-        id = file.split(".")[0].to!ubyte;
-
+        this.id = id;
         uint bytes;
 
         ubyte* data = file.ptr.LoadFileData(&bytes);
