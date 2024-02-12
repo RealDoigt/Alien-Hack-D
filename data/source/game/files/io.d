@@ -46,7 +46,7 @@ auto load(SaveFile sf)
 
 auto getSaveFiles()
 {
-    auto fileNames = dirEntries!false(savesFolder, "*" ~ fileFormat, SpanMode.shallow, false);
+    auto fileNames = dirEntries(savesFolder, "*" ~ fileFormat, SpanMode.shallow, false);
 
     SaveFile[] files;
 
@@ -61,7 +61,7 @@ auto getSaveFiles()
 
 auto getLevelFiles(string moduleName)
 {
-    auto fileNames = dirEntries!false(savesFolder, "*" ~ levelFormat, SpanMode.shallow, false);
+    auto fileNames = dirEntries(savesFolder, "*" ~ levelFormat, SpanMode.shallow, false);
 
     GameFile[] files;
 
@@ -73,13 +73,15 @@ auto getLevelFiles(string moduleName)
 
 auto getModules()
 {
-    auto modules = dirEntries!false(modulesFolder, "*", SpanMode.shallow, false);
+    auto modules = dirEntries(modulesFolder, "*", SpanMode.shallow, false);
     module_t[] results;
     
     foreach (m; modules)
         if (m.length <= moduleSize)
         {
-            results ~= new module_t;
+            // I don't know how to do the following in one line instead of two
+            module_t temp;
+            results ~= temp;
             foreach (i, c; m) results[$ - 1][i] = c;
         }
         

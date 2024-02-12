@@ -1,12 +1,12 @@
 module game.files.save;
 
-class SaveFile : GameFile
+class SaveFile //: GameFile
 {
     private ubyte[] binaryData;
 
     this(string fileName, ubyte[] binaryData)
     {
-        super(fileName);
+        //super(fileName);
         this.binaryData = binaryData;
     }
 

@@ -3,6 +3,7 @@ import std.string;
 import std.conv;
 import raylib;
 import game;
+import global;
 
 class Level
 {
